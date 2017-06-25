@@ -21,7 +21,7 @@ var notImplemented = function(req, res){
 };
 
 //articles
-app.get('/articles', notImplemented); // show them all blog posts
+app.get('/articles', articles.index); // show them all blog posts
 app.get('/articles/new', articles.new);
 app.get('/articles/:articleId', notImplemented); //reading one
 app.post('/articles', articles.create); //making a new posts

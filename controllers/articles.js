@@ -1,10 +1,16 @@
 
 
 var articles = [];
-
+//create action
 module.exports.create = function(req, res){
-    console.log(req.body);
-    res.json(req.body);
+    req.body.comments = [];
+    articles.push(req.body);
+    res.redirect('/articles');
+};
+
+//display all posts
+module.exports.index = function(req, res){
+  res.json(articles);
 };
 
 /*
