@@ -1,7 +1,14 @@
-var express = require('express');
-var app = express();
-var articles = require('./controllers/articles');
-var bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const mustacheExpress = require('mustache-express');
+const articles = require('./controllers/articles');
+const bodyParser = require('body-parser');
+const path = require('path');
+
+//Mustache Set Up
+app.engine('mustache', mustacheExpress());
+app.set('views', './views');
+app.set('view engine', 'mustache');
 
 /*
     a comment would look like
@@ -13,7 +20,7 @@ var bodyParser = require('body-parser');
 
 //CRUD
 //Create Read Update Delete
-
+app.use('/rewview_projects', express.static(path.join(__dirname, './public')));
 // app.use(express.logger());
 app.use(bodyParser.urlencoded({ extended: false }));
 var notImplemented = function(req, res){
